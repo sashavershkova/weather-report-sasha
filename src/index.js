@@ -1,10 +1,11 @@
 "use strict";
 
 const state = {
-  temperature: 60
+  temperature: 60,
+  cityName: null
 }
 
-// TEMPERATURE
+// TEMPERATURE + LANDSCAPE
 const temperature = document.getElementById('tempValue');
 const landscape = document.getElementById('landscape')
 
@@ -34,6 +35,13 @@ const updateTemperature = (direction) => {
   }
 };
 
+// CITY NAME
+const updateCity = () => {
+  const cityName = document.getElementById('headerCityName');
+  const cityInput = document.getElementById('cityNameInput');
+  cityName.textContent = cityInput.value;
+};
+
 
 
 
@@ -44,6 +52,9 @@ const registerEventHandlers = () => {
   // decrease temperature
   const downButton = document.getElementById('decreaseTempControl');
   downButton.addEventListener('click', () =>  updateTemperature('decrease'));
+  // city input
+  const cityInput = document.getElementById('cityNameInput');
+  cityInput.addEventListener('input', updateCity);
 };
 
 document.addEventListener('DOMContentLoaded', registerEventHandlers);
